@@ -25,6 +25,6 @@ public class IdMatchConstraint implements ConstraintValidator<IdMatch, Object[]>
       }
       Number id = (Number) obj[0];
       Identifiable identifiable = (Identifiable) obj[1];
-      return id.equals(identifiable.getId());
+      return identifiable.getId() == null || id.equals(identifiable.getId());
    }
 }

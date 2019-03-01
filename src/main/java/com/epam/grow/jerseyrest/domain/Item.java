@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import java.math.BigDecimal;
 
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = false, onlyExplicitlyIncluded = true)
 @Entity
 public class Item extends AbstractEntity {
     private String name;
