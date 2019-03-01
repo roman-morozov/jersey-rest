@@ -1,6 +1,7 @@
 package com.epam.grow.jerseyrest.service.impl;
 
 import com.epam.grow.jerseyrest.domain.Item;
+import com.epam.grow.jerseyrest.domain.Purchase;
 import com.epam.grow.jerseyrest.repository.ItemRepository;
 import com.epam.grow.jerseyrest.service.api.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,10 +38,11 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public void delete(Long id) {
         itemRepository.deleteById(id);
+        Purchase purchase = new Purchase();
     }
 
     @Override
     public boolean exists(Long id) {
-        return false;
+        return itemRepository.existsById(id);
     }
 }
