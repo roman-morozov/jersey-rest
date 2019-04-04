@@ -10,20 +10,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true, onlyExplicitlyIncluded = true)
 @Entity
 public class Purchase extends AbstractEntity {
+
+    @Id
+    @GeneratedValue
+    private Long id;
+
     @ManyToMany(fetch = FetchType.LAZY)
     @Setter(AccessLevel.NONE)
-    private List<Item> items = new ArrayList<>();
+    private List<PurchaseItem> items = new ArrayList<>();
     private LocalDateTime purchaseDate;
-    private BigDecimal cost;
+    private BigDecimal cost = BigDecimal.ZERO;
 
-    public void addItem(@NonNull Item item) {
+    public void addItem(@NonNull PurchaseItem item) {
         items.add(item);
     }
 
-    public void removeItem(@NonNull Item item) {
+    public void removeItem(@NonNull PurchaseItem item) {
         items.remove(item);
     }
 }

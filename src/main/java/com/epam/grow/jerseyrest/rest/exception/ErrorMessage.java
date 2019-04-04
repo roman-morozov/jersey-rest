@@ -1,9 +1,9 @@
-package com.epam.grow.jerseyrest.controller.dto;
+package com.epam.grow.jerseyrest.rest.exception;
 
 import lombok.Data;
 
 @Data
-public class ErrorInfo {
+public class ErrorMessage {
     private String status;
     private String message;
 }

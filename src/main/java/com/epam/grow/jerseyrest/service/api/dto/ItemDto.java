@@ -1,15 +1,15 @@
-package com.epam.grow.jerseyrest.controller.dto;
+package com.epam.grow.jerseyrest.service.api.dto;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 @Data
-public class ItemDto implements Identifiable {
+public class ItemDto implements Serializable {
     @JsonSerialize(using = ToStringSerializer.class)
     private Long id;
     @NotBlank

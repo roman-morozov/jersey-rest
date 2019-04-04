@@ -15,4 +15,23 @@ public abstract class AbstractEntity implements Serializable {
     @Id
     @GeneratedValue
     private Long id;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        AbstractEntity that = (AbstractEntity) o;
+
+        return id != null && id.equals(that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return 31;
+    }
 }
