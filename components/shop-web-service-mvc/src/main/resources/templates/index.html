@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Items</title>
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"/>
+
+<div class="container">
+
+    <div>
+        <a href="#" th:href="@{/items/add}" class="btn btn-info">Add item</a>
+    </div>
+    <div class="starter-template" th:with="hasItems = ${items!=null and !items.empty}">
+        <div th:if="${hasItems}">
+            <h1>Items</h1>
+            <form action="#" th:action="@{/purchases}" th:object="${purchase}" method="post">
+                <fieldset>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="item, itemStat : ${items}">
+                                <th scope="row">
+                                    <input type="checkbox" th:name="|purchaseItems[${itemStat.index}].id|" th:value="${item.id}">
+                                </th>
+                                <td th:text="${item.name}">Name</td>
+                                <td th:text="${item.description}">Description</td>
+                                <td th:text="${item.price}">Price</td>
+                                <td>
+                                    <input type="text" th:name="|purchaseItems[${itemStat.index}].amount|">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <input type="submit" value="Purchase" class="btn btn-primary">
+                </fieldset>
+            </form>
+        </div>
+        <div th:unless="${hasItems}">
+            <span>There are no items</span>
+        </div>
+    </div>
+
+</div>
+<!-- /.container -->
+
+<div th:replace="fragments/footer :: footer"/>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Items</title>
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+<body>
+    <div th:replace="fragments/header :: header"/>
+    <div class="container">
+        <form action="#" th:action="@{/items}" th:object="${item}" method="post">
+            <fieldset>
+                <input type="text" th:field="*{name}">
+                <input type="text" th:field="*{description}">
+                <input type="text" th:field="*{price}">
+                <input type="submit" value="Add item" class="btn btn-primary">
+            </fieldset>
+        </form>
+    </div>
+</body>
+</html>

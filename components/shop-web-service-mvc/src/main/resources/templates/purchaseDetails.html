@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Items</title>
+
+    <div th:replace="fragments/header :: header-css"/>
+
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"/>
+
+<div class="container">
+
+    <div class="starter-template">
+        <h1>Purchase details</h1>
+        <div>
+            <p>Purchase date: <span th:text="${purchase.purchaseDate}">date</span></p>
+            <p>Total cost: <span th:text="${purchase.totalCost}">totalCost</span></p>
+        </div>
+        <table class="table">
+            <thead>
+            <tr>
+                <td scope="col">Name</td>
+                <td scope="col">Description</td>
+                <td scope="col">Price</td>
+                <td scope="col">Amount</td>
+                <td scope="col">Cost</td>
+            </tr>
+            </thead>
+            <tbody>
+                <tr th:each="item : ${purchase.items}">
+                    <td scope="row" th:text="${item.name}">Name</td>
+                    <td th:text="${item.description}">Description</td>
+                    <td th:text="${item.price}">Price</td>
+                    <td th:text="${item.amount}">Amount</td>
+                    <td th:text="${item.cost}">Cost</td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            <p>Total cost: <span th:text="${purchase.totalCost}">totalCost</span></p>
+        </div>
+    </div>
+
+</div>
+<!-- /.container -->
+
+<div th:replace="fragments/footer :: footer"/>
+
+</body>
+</html>

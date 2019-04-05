@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Items</title>
+
+    <div th:replace="fragments/header :: header-css"/>
+
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"/>
+
+<div class="container">
+
+    <div class="starter-template">
+        <h1>Purchases</h1>
+        <table class="table">
+            <thead>
+            <tr>
+                <td scope="col">Purchase Date</td>
+                <td scope="col">Total cost</td>
+                <td scope="col">Details</td>
+            </tr>
+            </thead>
+            <tbody>
+                <tr th:each="purchase : ${purchases}">
+                    <th scope="row" th:text="${purchase.purchaseDate}">PurchaseDate</th>
+                    <td th:text="${purchase.totalCost}">Amount</td>
+                    <td>
+                        <a th:href="@{/purchases/{id}(id=${purchase.id})}" class="btn btn-info">See details</a>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+<!-- /.container -->
+
+<div th:replace="fragments/footer :: footer"/>
+
+</body>
+</html>
